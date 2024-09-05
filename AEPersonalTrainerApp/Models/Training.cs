@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿
+using SQLite;
 
 namespace AEPersonalTrainerApp.Models
 {
@@ -7,10 +8,13 @@ namespace AEPersonalTrainerApp.Models
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
+        [MaxLength(100), NotNull]
         public string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
-        public string AudioText { get; set; }
+        public string? AudioText { get; set; }
+
+        public int DefaultRest { get; set; }
     }
 }
