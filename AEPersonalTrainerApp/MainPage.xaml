@@ -1,4 +1,34 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AEPersonalTrainerApp.ViewModels"
+             x:Class="AEPersonalTrainerApp.MainPage">
+
+    <ContentPage.BindingContext>
+        <vm:TrainingViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <Entry Text="{Binding Name}" Placeholder="Nombre del Entrenamiento" />
+        <Entry Text="{Binding Description}" Placeholder="Descripción del Entrenamiento" />
+
+        <Button Text="Guardar Entrenamiento" Command="{Binding SaveTrainingCommand}" />
+
+        <CollectionView ItemsSource="{Binding Trainings}" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding Name}" Detail="{Binding Description}" Command="{Binding Path=BindingContext.LoadItemsCommand, Source={x:Reference Name}}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Eliminar Entrenamiento" Command="{Binding DeleteTrainingCommand}" CommandParameter="{Binding SelectedItem, Source={x:Reference Name}}" />
+    </StackLayout>
+
+</ContentPage>   
+    
+    
+<!--Origin-->
+<!--<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEPersonalTrainerApp.MainPage">
@@ -33,4 +63,4 @@
         </VerticalStackLayout>
     </ScrollView>
 
-</ContentPage>
+</ContentPage>-->

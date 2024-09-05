@@ -27,21 +27,21 @@ namespace AEPersonalTrainerApp.Data
             return _database.Table<Training>().ToListAsync();
         }
 
-        public Task<int> SaveTrainingAsync(Training entrenamiento)
+        public Task<int> SaveTrainingAsync(Training training)
         {
-            if (entrenamiento.Id != 0)
+            if (training.Id != 0)
             {
-                return _database.UpdateAsync(entrenamiento);
+                return _database.UpdateAsync(training);
             }
             else
             {
-                return _database.InsertAsync(entrenamiento);
+                return _database.InsertAsync(training);
             }
         }
 
-        public Task<int> DeleteTrainingAsync(Training entrenamiento)
+        public Task<int> DeleteTrainingAsync(Training training)
         {
-            return _database.DeleteAsync(entrenamiento);
+            return _database.DeleteAsync(training);
         }
 
         // Métodos CRUD para TrainingItem
@@ -50,38 +50,38 @@ namespace AEPersonalTrainerApp.Data
             return _database.Table<TrainingItem>().ToListAsync();
         }
 
-        public Task<int> SaveTrainingItemAsync(TrainingItem entrenamientoItem)
+        public Task<int> SaveTrainingItemAsync(TrainingItem trainingItem)
         {
-            if (entrenamientoItem.Id != 0)
+            if (trainingItem.Id != 0)
             {
-                return _database.UpdateAsync(entrenamientoItem);
+                return _database.UpdateAsync(trainingItem);
             }
             else
             {
-                return _database.InsertAsync(entrenamientoItem);
+                return _database.InsertAsync(trainingItem);
             }
         }
 
-        public Task<int> DeleteTrainingItemAsync(TrainingItem entrenamientoItem)
+        public Task<int> DeleteTrainingItemAsync(TrainingItem trainingItem)
         {
-            return _database.DeleteAsync(entrenamientoItem);
+            return _database.DeleteAsync(trainingItem);
         }
 
         // Métodos para gestionar las relaciones en TrainingItemXref
-        public Task<List<TrainingItem>> GetItemsByTrainingAsync(int entrenamientoId)
+        public Task<List<TrainingItem>> GetItemsByTrainingAsync(int trainingId)
         {
             return _database.QueryAsync<TrainingItem>(
                 "SELECT ei.* FROM TrainingItem ei " +
                 "JOIN TrainingItemXref xref ON ei.Id = xref.IdTrainingItem " +
-                "WHERE xref.IdTraining = ?", entrenamientoId);
+                "WHERE xref.IdTraining = ?", trainingId);
         }
 
-        public Task<int> AddTrainingItemToTrainingAsync(int entrenamientoId, int entrenamientoItemId)
+        public Task<int> AddTrainingItemToTrainingAsync(int trainingId, int trainingItemId)
         {
             var xref = new TrainingItemXref
             {
-                IdTraining = entrenamientoId,
-                IdTrainingItem = entrenamientoItemId
+                IdTraining = trainingId,
+                IdTrainingItem = trainingItemId
             };
             return _database.InsertAsync(xref);
         }
