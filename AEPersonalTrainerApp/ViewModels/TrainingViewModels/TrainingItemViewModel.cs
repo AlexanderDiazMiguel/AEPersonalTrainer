@@ -1,13 +1,11 @@
 ﻿using AEPersonalTrainerApp.Data;
 using AEPersonalTrainerApp.Models;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace AEPersonalTrainerApp.ViewModels
+namespace AEPersonalTrainerApp.ViewModels.TrainingViewModels
 {
-    public class TrainingItemViewModel : INotifyPropertyChanged
+    public class TrainingItemViewModel : BaseViewModel
     {
         public ObservableCollection<TrainingItem> Items { get; set; } = new ObservableCollection<TrainingItem>();
         public ICommand LoadItemsCommand { get; }
@@ -39,8 +37,6 @@ namespace AEPersonalTrainerApp.ViewModels
 
         private readonly Database _database;
         private int _trainingId;
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         public TrainingItemViewModel(Database database, int trainingId)
         {
@@ -92,11 +88,6 @@ namespace AEPersonalTrainerApp.ViewModels
                 await _database.AddTrainingItemToTrainingAsync(_trainingId, item.Id);
                 await LoadItemsAsync();
             }
-        }
-
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
