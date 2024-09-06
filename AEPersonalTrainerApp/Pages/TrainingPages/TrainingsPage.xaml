@@ -3,11 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AEPersonalTrainerApp.Pages.TrainingPages.TrainingsPage"
              Title="TrainingsPage">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="OnAddTrainingClicked" />
-    </ContentPage.ToolbarItems>
-    <VerticalStackLayout>
-        <CollectionView ItemsSource="{Binding Trainings}"
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" BackgroundColor="LightGray" Padding="10">
+            <Label Text="Trainings" FontSize="24" VerticalOptions="Center" />
+            <Button Text="+" FontSize="24" HorizontalOptions="End" Clicked="OnAddTrainingClicked" />
+        </Grid>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Trainings}"
                         SelectionMode="Single"
                         SelectionChanged="OnTrainingSelected">
             <CollectionView.ItemTemplate>
@@ -16,5 +24,5 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
