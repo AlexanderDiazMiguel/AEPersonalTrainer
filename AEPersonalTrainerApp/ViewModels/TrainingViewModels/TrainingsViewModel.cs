@@ -27,7 +27,7 @@ namespace AEPersonalTrainerApp.ViewModels.TrainingViewModels
 
         private async void OnAddTraining()
         {
-            await Shell.Current.GoToAsync("AddPage");
+            await Shell.Current.GoToAsync("///TrainingPageUpdate");
         }
 
         private async void OnTrainingSelected(Training training)

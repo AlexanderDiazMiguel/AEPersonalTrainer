@@ -64,13 +64,24 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Pages\TrainingPages\TrainingsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
+	  <Compile Update="Pages\TrainingPages\TrainingPageUpdate.xaml.cs">
+	    <DependentUpon>TrainingPageUpdate.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Pages\TrainingPages\TrainingPageList.xaml.cs">
+	    <DependentUpon>TrainingPageList.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Pages\TrainingPages\Views\" />
+	  <MauiXaml Update="Pages\TrainingPages\TrainingPageDetails.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TrainingPages\TrainingPageUpdate.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\TrainingPages\TrainingPageList.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

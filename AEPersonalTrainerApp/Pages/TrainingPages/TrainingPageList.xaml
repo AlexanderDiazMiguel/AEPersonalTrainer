@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="AEPersonalTrainerApp.Pages.TrainingPages.TrainingsPage"
+             xmlns:vm="clr-namespace:AEPersonalTrainerApp.ViewModels.TrainingViewModels"
+             x:Class="AEPersonalTrainerApp.Pages.TrainingPages.TrainingPageList"
              Title="TrainingsPage">
+
+    <ContentPage.BindingContext>
+        <vm:TrainingsViewModel />
+    </ContentPage.BindingContext>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -15,7 +20,7 @@
             <Button Text="+" FontSize="24" HorizontalOptions="End" Clicked="OnAddTrainingClicked" />
         </Grid>
 
-        <CollectionView Grid.Row="1" ItemsSource="{Binding Trainings}"
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Trainings}"                      
                         SelectionMode="Single"
                         SelectionChanged="OnTrainingSelected">
             <CollectionView.ItemTemplate>

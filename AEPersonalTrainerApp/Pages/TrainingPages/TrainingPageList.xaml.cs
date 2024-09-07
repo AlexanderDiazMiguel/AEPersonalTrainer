@@ -3,9 +3,9 @@ using AEPersonalTrainerApp.ViewModels.TrainingViewModels;
 
 namespace AEPersonalTrainerApp.Pages.TrainingPages;
 
-public partial class TrainingsPage : ContentPage
+public partial class TrainingPageList : ContentPage
 {
-	public TrainingsPage()
+	public TrainingPageList()
 	{
 		InitializeComponent();
         BindingContext = new TrainingsViewModel();

@@ -7,9 +7,7 @@
     Shell.FlyoutBehavior="Disabled"
     Title="AEPersonalTrainerApp">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:TrainingsPage}"
-        Route="TrainingPage" />
+    <ShellContent Title="Home" ContentTemplate="{DataTemplate local:TrainingPageList}" Route="TrainingPageList" />
+    <ShellContent Title="Training Page Update" ContentTemplate="{DataTemplate local:TrainingPageUpdate}" Route="TrainingPageUpdate" />
 
 </Shell>
